@@ -1,7 +1,7 @@
 <template>
   <div class="car-details container-fluid">
     <div class="row mt-5">
-      <div class="col text-center">
+      <div class="col text-center car-img">
         <img :src="car.imgUrl" alt="" />
       </div>
       <div class="row mt-3 justify-content-center">
@@ -47,53 +47,50 @@
 
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
-import { useRoute, useRouter } from 'vue-router'
-import { logger } from '../utils/Logger'
-import { AppState } from '../AppState'
-import { carsService } from '../services/CarsService'
-import Pop from '../utils/Pop'
+import { computed, onMounted } from "@vue/runtime-core";
+import { useRoute, useRouter } from "vue-router";
+import { logger } from "../utils/Logger";
+import { AppState } from "../AppState";
+import { carsService } from "../services/CarsService";
+import Pop from "../utils/Pop";
 export default {
   setup() {
     // NOTE the 'route' is the details object
-    const route = useRoute()
+    const route = useRoute();
     // NOTE the 'router' is the object with the functionality of the router
-    const router = useRouter()
+    const router = useRouter();
     onMounted(async () => {
-      logger.log('CAR ID', route.params.id)
+      logger.log("CAR ID", route.params.id);
       try {
         // when this component loads get the id from the params and set that car as the active car
-        await carsService.getById(route.params.id)
+        await carsService.getById(route.params.id);
       } catch (error) {
-        logger.error(error)
-        Pop.toast('Could not get that car', 'error')
+        logger.error(error);
+        Pop.toast("Could not get that car", "error");
         // change the route back to the main cars page
-        router.push({ name: 'Cars' })
+        router.push({ name: "Cars" });
       }
-
-    })
+    });
     return {
       car: computed(() => AppState.activeCar),
-      carColor: computed(() => AppState.activeCar.color || '#ffffff'),
+      carColor: computed(() => AppState.activeCar.color || "#ffffff"),
       account: computed(() => AppState.account),
 
       async remove() {
         try {
           if (await Pop.confirm()) {
-
-            await carsService.remove()
+            await carsService.remove();
             // change the route back to the main cars page
-            router.push({ name: 'Cars' })
+            router.push({ name: "Cars" });
           }
         } catch (error) {
-          logger.error(error)
-          Pop.toast('Failed to Delete', 'error')
-
+          logger.error(error);
+          Pop.toast("Failed to Delete", "error");
         }
-      }
-    }
-  }
-}
+      },
+    };
+  },
+};
 </script>
 
 
@@ -105,6 +102,12 @@ export default {
 .user-tag {
   & img {
     height: 50px;
+  }
+}
+
+.car-img {
+  & img {
+    height: 500px;
   }
 }
 </style>

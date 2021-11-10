@@ -59,12 +59,12 @@
             Cars
           </router-link>
           <!-- FIXME change to Houses -->
-          <!-- <router-link
-            :to="{ name: 'About' }"
-            class="btn text-success lighten-30 selectable text-uppercase"
+          <router-link
+            :to="{ name: 'Houses' }"
+            class="btn lighten-30 selectable text-uppercase"
           >
             Houses
-          </router-link> -->
+          </router-link>
           <!-- FIXME change to Jobs -->
           <!-- <router-link
             :to="{ name: 'About' }"
