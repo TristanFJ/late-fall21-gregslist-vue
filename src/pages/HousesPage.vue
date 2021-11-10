@@ -1,10 +1,10 @@
 <template>
   <div class="houses container-fluid">
     <div class="row">
-      <div class="col d-flex justify-content-between p-3">
+      <div class="col d-flex p-3">
         <h2>Houses</h2>
         <button
-          class="btn btn-outline-success"
+          class="btn btn-outline-success mx-3"
           data-bs-toggle="modal"
           data-bs-target="#house-modal"
         >

@@ -1,10 +1,10 @@
 <template>
   <div class="cars container-fluid">
     <div class="row">
-      <div class="col d-flex justify-content-between p-3">
+      <div class="col d-flex p-3">
         <h2>Cars</h2>
         <button
-          class="btn btn-outline-success"
+          class="btn btn-outline-success mx-3"
           data-bs-toggle="modal"
           data-bs-target="#car-modal"
         >
@@ -23,28 +23,27 @@
 
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
-import Pop from '../utils/Pop'
-import { logger } from '../utils/Logger'
-import { carsService } from '../services/CarsService'
-import { AppState } from '../AppState'
-
+import { computed, onMounted } from "@vue/runtime-core";
+import Pop from "../utils/Pop";
+import { logger } from "../utils/Logger";
+import { carsService } from "../services/CarsService";
+import { AppState } from "../AppState";
 
 export default {
   setup() {
     onMounted(async () => {
       try {
-        await carsService.getAll()
+        await carsService.getAll();
       } catch (error) {
-        logger.log(error)
-        Pop.toast('Something went wrong', 'error')
+        logger.log(error);
+        Pop.toast("Something went wrong", "error");
       }
-    })
+    });
     return {
-      cars: computed(() => AppState.cars)
-    }
-  }
-}
+      cars: computed(() => AppState.cars),
+    };
+  },
+};
 </script>
 
 

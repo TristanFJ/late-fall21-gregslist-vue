@@ -4,7 +4,7 @@
       <img class="img-fluid" alt="logo" src="../assets/img/GregsList.svg" />
     </router-link>
     <div id="navbarText">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav">
         <span>
           <button
             class="btn selectable text-success lighten-30 text-uppercase my-1"
@@ -16,7 +16,7 @@
 
           <div class="my-1" v-else>
             <div
-              class="dropdown-toggle selectable"
+              class="dropdown-toggle selectable d-flex justify-content-center"
               data-bs-toggle="dropdown"
               aria-expanded="false"
               id="authDropdown"
@@ -79,22 +79,22 @@
 </template>
 
 <script>
-import { AuthService } from '../services/AuthService'
-import { AppState } from '../AppState'
-import { computed } from 'vue'
+import { AuthService } from "../services/AuthService";
+import { AppState } from "../AppState";
+import { computed } from "vue";
 export default {
   setup() {
     return {
       user: computed(() => AppState.user),
       async login() {
-        AuthService.loginWithPopup()
+        AuthService.loginWithPopup();
       },
       async logout() {
-        AuthService.logout({ returnTo: window.location.origin })
-      }
-    }
-  }
-}
+        AuthService.logout({ returnTo: window.location.origin });
+      },
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -120,5 +120,9 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+nav {
+  min-width: 150px;
+  max-width: 150px;
 }
 </style>
