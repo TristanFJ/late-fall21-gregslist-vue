@@ -41,6 +41,7 @@ class HousesService {
     logger.log(res.data)
     AppState.houses = AppState.houses.filter(h => h.id !== AppState.activeHouse.id)
     AppState.activeHouse = new House()
+
   }
 }
 

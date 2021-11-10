@@ -76,6 +76,7 @@ export default {
         try {
           if (await Pop.confirm()) {
             await housesService.remove();
+            Pop.toast("Deleted!", "success");
             router.push({ name: "Houses" });
           }
         } catch (error) {

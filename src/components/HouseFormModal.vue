@@ -118,8 +118,10 @@ export default {
         try {
           if (editable.value.id) {
             await housesService.edit(editable.value);
+            Pop.toast("Edited!", "success");
           } else {
             await housesService.create(editable.value);
+            Pop.toast("Created!", "success");
           }
           Modal.getOrCreateInstance(
             document.getElementById("house-modal")
